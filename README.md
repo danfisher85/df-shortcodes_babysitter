@@ -1,4 +1,4 @@
-df-shortcodes_tjoy
+DF Shortcodes for Babysitter
 ==================
 
-Shortcodes for PetSitter WordPress Theme
+Shortcodes for Babysitter WordPress Theme
