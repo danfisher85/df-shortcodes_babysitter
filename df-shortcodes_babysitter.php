@@ -3,7 +3,7 @@
 Plugin Name:       DF Shortcodes for Babysitter
 Plugin URI:        http://themeforest.net/user/dan_fisher/portfolio
 Description:       A simple shortcode generator. Add buttons, columns, tabs, toggles and alerts to your theme.
-Version:           1.1.0
+Version:           1.1.1
 Author:            dan_fisher
 Author URI:        http://themeforest.net/user/dan_fisher
 Text Domain:       df-shortcodes_babysitter

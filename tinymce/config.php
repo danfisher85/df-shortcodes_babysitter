@@ -2465,6 +2465,7 @@ $zilla_shortcodes['resumes'] = array(
 			'desc' => __('In which order to order resumes.', 'babysitter'),
 			'options' => array(
 				'date' => 'date',
+				'featured' => 'featured',
 				'title' => 'title',
 				'ID' => 'ID',
 				'name' => 'name',
