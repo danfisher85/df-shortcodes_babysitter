@@ -2311,6 +2311,7 @@ $zilla_shortcodes['jobs'] = array(
 			'desc' => __('Jobs order.', 'babysitter'),
 			'options' => array(
 				'date' => 'date',
+				'featured' => 'featured',
 				'title' => 'title',
 				'ID' => 'ID',
 				'name' => 'name',
