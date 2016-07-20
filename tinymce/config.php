@@ -2966,8 +2966,14 @@ $zilla_shortcodes['jobs_feed'] = array(
 				'true' => 'Only Featured'
 			)
 		),
+		'categories' => array(
+			'std' => '',
+			'type' => 'text',
+			'label' => __('Categories', 'petsitter'),
+			'desc' => __('Comma separate slugs to limit the jobs to certain categories.', 'petsitter'),
+		),
 	),
-	'shortcode' => '[jobs_feed num="{{num}}" cols="{{cols}}" orderby="{{orderby}}" featured="{{featured}}"]',
+	'shortcode' => '[jobs_feed num="{{num}}" cols="{{cols}}" orderby="{{orderby}}" featured="{{featured}}" categories="{{categories}}"]',
 	'popup_title' => __('Insert Jobs Feed Shortcode', 'babysitter')
 );
 
@@ -3056,8 +3062,14 @@ $zilla_shortcodes['resumes_feed'] = array(
 				'true' => 'Only Featured'
 			)
 		),
+		'categories' => array(
+			'std' => '',
+			'type' => 'text',
+			'label' => __('Categories', 'petsitter'),
+			'desc' => __('Comma separate slugs to limit the resumes to certain categories.', 'petsitter'),
+		),
 	),
-	'shortcode' => '[resumes_feed num="{{num}}" cols="{{cols}}" orderby="{{orderby}}" featured="{{featured}}"]',
+	'shortcode' => '[resumes_feed num="{{num}}" cols="{{cols}}" orderby="{{orderby}}" featured="{{featured}}" categories="{{categories}}"]',
 	'popup_title' => __('Insert Resumes Feed Shortcode', 'babysitter')
 );
 ?>
