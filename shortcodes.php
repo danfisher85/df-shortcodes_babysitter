@@ -86,7 +86,7 @@ if (!function_exists('alert')) {
 		extract(shortcode_atts(array(
 			'type'   => 'danger'
 	    ), $atts));
-		
+
 	   return '<div class="alert alert-'.$type.' fade in alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="fa fa-times"></i></button>' . do_shortcode($content) . '</div>';
 	}
 	add_shortcode('alert', 'alert');
@@ -139,7 +139,7 @@ if (!function_exists('button_shortcode')) {
 				'target' => '_self',
 				'icon' => 'none'
 	   ), $atts));
-	    
+
 		$output =  '<a href="'.$link.'" title="'.$text.'" class="btn btn-'.$size.' btn-'.$color.'" target="'.$target.'">';
 			if($icon !== 'none') {
 				$output .= '<i class="fa '.$icon.'"></i>';
@@ -177,7 +177,7 @@ if (!function_exists('cta_shortcode')) {
 			  'overlay_opacity' => '50',
 			  'overlay_color' => 'dark',
 			  'custom_class' => ''
-			   
+
 		), $atts));
 
 		$cta_bg  = '';
@@ -228,7 +228,7 @@ if (!function_exists('cta_shortcode')) {
 
 if (!function_exists('grid_column')) {
 	function grid_column($atts, $content=null, $shortcodename ="")
-	{	
+	{
 		extract(shortcode_atts(array(
 			'class' => ''
 		), $atts));
@@ -303,7 +303,7 @@ function dfFontAwesome($atts) {
 
 	return $theAwesomeFont;
 }
-  
+
 add_shortcode('icon', 'dfFontAwesome');
 
 
@@ -326,7 +326,7 @@ function entypoFont($atts) {
 
 	return $theEntypoFont;
 }
-  
+
 add_shortcode('entypo_icon', 'entypoFont');
 
 
@@ -361,26 +361,30 @@ if (!function_exists('icobox_shortcode')) {
 
 		if ( $custom_symbol == '' ) {
 			if( substr($icon, 0, 2) == "fa" ) {
-				$icon = '<i class="fa ' . $icon . '"></i>';
+				$icon_output = '<i class="fa ' . $icon . '"></i>';
 			} else {
-				$icon = '<i class="entypo ' . $icon . '"></i>';
+				$icon_output = '<i class="entypo ' . $icon . '"></i>';
 			}
 		} else {
-			$icon = '<span class="icon-box-custom-symbol">' . $custom_symbol . '</span>';
+			$icon_output = '<span class="icon-box-custom-symbol">' . $custom_symbol . '</span>';
 		}
-		
+
 
 
 		$output = '<div class="icon-box icon-box-color__'.$color.' '.$shape.' '.$centered.' '.$boxed.'">';
-			$output .= '<div class="icon">';
-				if($url != '') {
-					$output .= '<a href="'.$url.'">';
-						$output .= $icon;
-					$output .= '</a>';
-				} else {
-					$output .= $icon;
-				}
-			$output .= '</div>';
+
+			if ( $icon != 'none' || $custom_symbol != '' ) {
+				$output .= '<div class="icon">';
+					if($url != '') {
+						$output .= '<a href="'.$url.'">';
+							$output .= $icon_output;
+						$output .= '</a>';
+					} else {
+						$output .= $icon_output;
+					}
+				$output .= '</div>';
+			}
+
 			$output .= '<div class="icon-box-body">';
 				if($title != '') {
 					if($url != '') {
@@ -485,7 +489,7 @@ if (!function_exists('pricing_shortcode')) {
 					$output .= '</sup>';
 					$output .= $price;
 				$output .= '</span>';
-				
+
 			$output .= '</header>';
 
 			$output .= '<div class="pricing-body">';
@@ -497,7 +501,7 @@ if (!function_exists('pricing_shortcode')) {
 				$output .= '<a class="btn '.$btn_class.'" href="'.$link_url.'">';
 					$output .= $link_txt;
 				$output .= '</a>';
-				
+
 			$output .= '</footer>';
 		$output .= '</div>';
 
@@ -647,7 +651,7 @@ if (!function_exists('testi_shortcode')) {
 				'name'     => '',
 				'info'     => ''
 	   ), $atts));
-	    
+
 		$output =  '<div class="testimonial testimonial-img-position__'.$img_pos.'">';
 			$output .= '<div class="testi-body">';
 				$output .= '<blockquote>';
@@ -692,7 +696,7 @@ if (!function_exists('hr_shortcode')) {
 	    ), $atts));
 
 		return '<hr class="hr__'.$type.' hr__margin-'.$margin.'">';
-		
+
 	}
 	add_shortcode('hr', 'hr_shortcode');
 }
@@ -736,19 +740,19 @@ function tabs_group($atts, $content = null ) {
     $output.= do_shortcode($content);
     $output.= '</ul><div class="tab-content">'.$tabs_divs.'</div></div>';
 
-    return $output;  
-} 
+    return $output;
+}
 add_shortcode('tab', 'tab');
 
-function tab($atts, $content = null) {  
+function tab($atts, $content = null) {
     global $tabs_divs;
 
-    extract(shortcode_atts(array(  
+    extract(shortcode_atts(array(
         'id'    => '',
         'title' => '',
         'state' => '',
         'icon'  => ''
-    ), $atts));  
+    ), $atts));
 
     if(empty($id)) {
     	$id = 'side-tab'.rand(100,999);
@@ -762,7 +766,7 @@ function tab($atts, $content = null) {
 				$icon = '<i class="entypo '.$icon.'"></i> ';
 			}
   	}
-    
+
 
     $state_link = '';
     if($state == 'open') {
@@ -808,7 +812,7 @@ if (!function_exists('list_shortcode')) {
 	    ), $atts));
 
 		return '<div class="list list__'.$type.' list-color__'.$color.'">' . do_shortcode($content) . '</div>';
-	  
+
 	}
 	add_shortcode('list', 'list_shortcode');
 }
@@ -989,11 +993,11 @@ if (!function_exists('resume_summary')) {
 
 					<div class="resume_summary_content-holder">
 						<div class="resume_summary_content">
-						
+
 							<h5 class="name"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
 							<h6 class="resume_summary_title"><a href="<?php the_permalink(); ?>"><?php the_candidate_title(); ?></a></h6>
 						</div>
-						
+
 						<footer class="resume_summary_footer">
 							<ul class="meta">
 								<?php if ( get_the_resume_category() ) : ?>
@@ -1063,10 +1067,10 @@ if (!function_exists('single_summary_shortcode')) {
 /*-----------------------------------------------------------------------------------*/
 
 if (!function_exists('shortcode_posts')) {
-	
+
 	function shortcode_posts($atts, $content = null) {
-		
-		extract(shortcode_atts(array(										 
+
+		extract(shortcode_atts(array(
 			'num' => '3',
 			'words_num' => '15',
 			'img_size' => 'small',
@@ -1098,7 +1102,7 @@ if (!function_exists('shortcode_posts')) {
 
 		global $post;
 		global $babysitter_string_limit_words;
-		
+
 		$args = array(
 			'post_type' => 'post',
 			'numberposts' => $num,
@@ -1108,7 +1112,7 @@ if (!function_exists('shortcode_posts')) {
 		);
 
 		$latest = get_posts($args);
-		
+
 		foreach($latest as $k => $post) {
 			// Unset not translated posts
 			if ( function_exists( 'wpml_get_language_information' ) ) {
@@ -1153,15 +1157,15 @@ if (!function_exists('shortcode_posts')) {
 						$output .= $link_txt . '<i class="fa fa-arrow-circle-o-right fa-right"></i>';
 					$output .= '</a>';
 				$output .= '</footer>';
-				
+
 			$output .= '</div>';
-				
+
 		}
-				
+
 		$output .= '</div>';
 		wp_reset_query();
 		return $output;
-		
+
 	}
 
 	add_shortcode('posts', 'shortcode_posts');
@@ -1177,10 +1181,10 @@ if (!function_exists('shortcode_posts')) {
 
 if (!function_exists('shortcode_portfolio')) {
 	function shortcode_portfolio($atts, $content = null) {
-			
+
 			extract(shortcode_atts(array(
 					'cat_slug' => '',
-					'cols' => '4',							 
+					'cols' => '4',
 					'num' => '4'
 			), $atts));
 
@@ -1205,7 +1209,7 @@ if (!function_exists('shortcode_portfolio')) {
 			$output = '<div class="project-feed row">';
 
 			global $post;
-			
+
 			$args = array(
 				'post_type' => 'portfolio',
 				'numberposts' => $num,
@@ -1216,7 +1220,7 @@ if (!function_exists('shortcode_portfolio')) {
 			);
 
 			$latest = get_posts($args);
-			
+
 			foreach($latest as $k => $post) {
 				// Unset not translated posts
 				if ( function_exists( 'wpml_get_language_information' ) ) {
@@ -1266,13 +1270,13 @@ if (!function_exists('shortcode_portfolio')) {
 
 						$output .= '</div>';
 					$output .= '</div>';
-					
+
 			}
-					
+
 			$output .= '</div>';
 			wp_reset_query();
 			return $output;
-			
+
 	}
 
 	add_shortcode('portfolio', 'shortcode_portfolio');
@@ -1396,7 +1400,7 @@ if (!function_exists('counter_stats')) {
 				}
 
 			} elseif ( $stat == 'users') {
-				
+
 				$users = count_users();
 				$stat  = $users[ 'total_users' ];
 
@@ -1460,16 +1464,16 @@ if (!function_exists('jobs_slider_shortcode')) {
 
 						<div class="job_summary_shortcode">
 							<a href="<?php the_permalink(); ?>"><?php the_company_logo( 'portfolio-n',  get_template_directory_uri() . '/images/job-placeholder.gif'); ?></a>
-							
+
 							<div class="job_summary_content-holder">
 								<div class="job_summary_content">
-								
+
 									<h5 class="name"><a href="<?php the_permalink(); ?>"><?php the_company_name(); ?></a></h5>
 									<h6 class="job_summary_title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h6>
 									<p class="job_summary_tagline"><?php the_company_tagline(); ?></p>
-								
+
 								</div>
-								
+
 								<footer class="job_summary_footer">
 									<ul class="meta">
 										<li class="category"><?php the_job_type(); ?></li>
@@ -1565,16 +1569,16 @@ if (!function_exists('jobs_feed_shortcode')) {
 
 						<div class="job_summary_shortcode">
 							<a href="<?php the_permalink(); ?>"><?php the_company_logo( 'portfolio-n',  get_template_directory_uri() . '/images/job-placeholder.gif'); ?></a>
-							
+
 							<div class="job_summary_content-holder">
 								<div class="job_summary_content">
-								
+
 									<h5 class="name"><a href="<?php the_permalink(); ?>"><?php the_company_name(); ?></a></h5>
 									<h6 class="job_summary_title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h6>
 									<p class="job_summary_tagline"><?php the_company_tagline(); ?></p>
-								
+
 								</div>
-								
+
 								<footer class="job_summary_footer">
 									<ul class="meta">
 										<li class="category"><?php the_job_type(); ?></li>
@@ -1658,11 +1662,11 @@ if (!function_exists('resumes_slider_shortcode')) {
 
 							<div class="resume_summary_content-holder">
 								<div class="resume_summary_content">
-								
+
 									<h5 class="name"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
 									<h6 class="resume_summary_title"><a href="<?php the_permalink(); ?>"><?php the_candidate_title(); ?></a></h6>
 								</div>
-								
+
 								<footer class="resume_summary_footer">
 									<ul class="meta">
 										<?php if ( get_the_resume_category() ) : ?>
@@ -1777,11 +1781,11 @@ if (!function_exists('resumes_feed_shortcode')) {
 
 							<div class="resume_summary_content-holder">
 								<div class="resume_summary_content">
-								
+
 									<h5 class="name"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
 									<h6 class="resume_summary_title"><a href="<?php the_permalink(); ?>"><?php the_candidate_title(); ?></a></h6>
 								</div>
-								
+
 								<footer class="resume_summary_footer">
 									<ul class="meta">
 										<?php if ( get_the_resume_category() ) : ?>
