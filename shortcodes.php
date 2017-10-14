@@ -1463,22 +1463,29 @@ if (!function_exists('jobs_slider_shortcode')) {
 					<div class="listing-box">
 
 						<div class="job_summary_shortcode">
-							<a href="<?php the_permalink(); ?>"><?php the_company_logo( 'portfolio-n',  get_template_directory_uri() . '/images/job-placeholder.gif'); ?></a>
+							<a href="<?php the_job_permalink(); ?>"><?php the_company_logo( 'portfolio-n',  get_template_directory_uri() . '/images/job-placeholder.gif'); ?></a>
 
 							<div class="job_summary_content-holder">
 								<div class="job_summary_content">
 
 									<h5 class="name"><a href="<?php the_permalink(); ?>"><?php the_company_name(); ?></a></h5>
-									<h6 class="job_summary_title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h6>
+									<h6 class="job_summary_title"><a href="<?php the_permalink(); ?>"><?php wpjm_the_job_title(); ?></a></h6>
 									<p class="job_summary_tagline"><?php the_company_tagline(); ?></p>
 
 								</div>
 
 								<footer class="job_summary_footer">
 									<ul class="meta">
-										<li class="category"><?php the_job_type(); ?></li>
+
+										<?php if ( get_option( 'job_manager_enable_types' ) ) { ?>
+											<?php $types = wpjm_get_the_job_types(); ?>
+											<?php if ( ! empty( $types ) ) : foreach ( $types as $type ) : ?>
+												<li class="category <?php echo esc_attr( sanitize_title( $type->slug ) ); ?>"><?php echo esc_html( $type->name ); ?></li>
+											<?php endforeach; endif; ?>
+										<?php } ?>
+										
 										<li class="location"><?php the_job_location( false ); ?></li>
-										<li class="date"><?php printf( __( 'Posted %s ago', 'babysitter' ), human_time_diff( get_post_time( 'U' ), current_time( 'timestamp' ) ) ); ?></li>
+										<li class="date"><?php the_job_publish_date(); ?></li>
 									</ul>
 								</footer>
 							</div>
@@ -1573,17 +1580,24 @@ if (!function_exists('jobs_feed_shortcode')) {
 							<div class="job_summary_content-holder">
 								<div class="job_summary_content">
 
-									<h5 class="name"><a href="<?php the_permalink(); ?>"><?php the_company_name(); ?></a></h5>
-									<h6 class="job_summary_title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h6>
+									<h5 class="name"><a href="<?php the_job_permalink(); ?>"><?php the_company_name(); ?></a></h5>
+									<h6 class="job_summary_title"><a href="<?php the_permalink(); ?>"><?php wpjm_the_job_title(); ?></a></h6>
 									<p class="job_summary_tagline"><?php the_company_tagline(); ?></p>
 
 								</div>
 
 								<footer class="job_summary_footer">
 									<ul class="meta">
-										<li class="category"><?php the_job_type(); ?></li>
+
+										<?php if ( get_option( 'job_manager_enable_types' ) ) { ?>
+											<?php $types = wpjm_get_the_job_types(); ?>
+											<?php if ( ! empty( $types ) ) : foreach ( $types as $type ) : ?>
+												<li class="category <?php echo esc_attr( sanitize_title( $type->slug ) ); ?>"><?php echo esc_html( $type->name ); ?></li>
+											<?php endforeach; endif; ?>
+										<?php } ?>
+
 										<li class="location"><?php the_job_location( false ); ?></li>
-										<li class="date"><?php printf( __( 'Posted %s ago', 'babysitter' ), human_time_diff( get_post_time( 'U' ), current_time( 'timestamp' ) ) ); ?></li>
+										<li class="date"><?php the_job_publish_date(); ?></li>
 									</ul>
 								</footer>
 							</div>
