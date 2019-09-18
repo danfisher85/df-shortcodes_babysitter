@@ -2953,7 +2953,8 @@ $zilla_shortcodes['jobs_feed'] = array(
 				'name'     => 'name',
 				'modified' => 'modified',
 				'parent'   => 'parent',
-				'rand'     => 'rand'
+				'rand'     => 'rand',
+				'rand_featured'     => 'rand_featured'
 			)
 		),
 		'featured' => array(
@@ -3049,7 +3050,8 @@ $zilla_shortcodes['resumes_feed'] = array(
 				'name'     => 'name',
 				'modified' => 'modified',
 				'parent'   => 'parent',
-				'rand'     => 'rand'
+				'rand'     => 'rand',
+				'rand_featured' => 'rand_featured'
 			)
 		),
 		'featured' => array(
@@ -3072,4 +3074,3 @@ $zilla_shortcodes['resumes_feed'] = array(
 	'shortcode' => '[resumes_feed num="{{num}}" cols="{{cols}}" orderby="{{orderby}}" featured="{{featured}}" categories="{{categories}}"]',
 	'popup_title' => __('Insert Resumes Feed Shortcode', 'babysitter')
 );
-?>

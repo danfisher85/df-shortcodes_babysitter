@@ -1651,6 +1651,10 @@ if (!function_exists('resumes_slider_shortcode')) {
 
 			ob_start();
 
+			if ( ! is_null( $featured ) ) {
+				$featured = ( is_bool( $featured ) && $featured ) || in_array( $featured, array( '1', 'true', 'yes' ) ) ? true : false;
+			}
+
 			$args = array(
 				'post_type'   => 'resume',
 				'post_status' => 'publish',
@@ -1775,11 +1779,7 @@ if (!function_exists('resumes_feed_shortcode')) {
 				'search_categories' => $categories,
 			);
 
-			if ( $orderby != 'rand' ) {
-				$resumes = get_resumes( $args );
-			} else {
-				$resumes = new WP_Query( $args );
-			}
+			$resumes = get_resumes( $args );
 
 			if ( $resumes->have_posts() ) : ?>
 
