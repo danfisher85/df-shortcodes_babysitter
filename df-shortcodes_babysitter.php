@@ -3,7 +3,7 @@
 Plugin Name:       DF Shortcodes for Babysitter
 Plugin URI:        http://themeforest.net/user/dan_fisher/portfolio
 Description:       A simple shortcode generator. Add buttons, columns, tabs, toggles and alerts to your theme.
-Version:           1.1.5
+Version:           1.1.6
 Author:            dan_fisher
 Author URI:        http://themeforest.net/user/dan_fisher
 Text Domain:       df-shortcodes_babysitter
@@ -81,6 +81,7 @@ class ZillaShortcodes {
 
 		// js
 		wp_enqueue_script( 'jquery-ui-sortable' );
+		wp_enqueue_script( 'jquery-migrate-legacy', ZILLA_TINYMCE_URI . '/js/jquery-migrate-1.4.1-wp.js', false, '1.4.1', false );
 		wp_enqueue_script( 'jquery-livequery', ZILLA_TINYMCE_URI . '/js/jquery.livequery.js', false, '1.1.1', false );
 		wp_enqueue_script( 'jquery-appendo', ZILLA_TINYMCE_URI . '/js/jquery.appendo.js', false, '1.0', false );
 		wp_enqueue_script( 'base64', ZILLA_TINYMCE_URI . '/js/base64.js', false, '1.0', false );
@@ -96,5 +97,3 @@ class ZillaShortcodes {
 
 }
 $zilla_shortcodes = new ZillaShortcodes();
-
-?>
